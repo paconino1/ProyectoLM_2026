@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENEBA Clone - Tienda de Videojuegos</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <h1>ENEBA CLONE</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Inicio</a></li>
+                <li><a href="shop.html">Tienda</a></li>
+                <li><a href="carrito.html" class="cart-link">🛒 Carrito <span id="cart-count" class="cart-badge">0</span></a></li>
+                <li><a href="#" id="login-btn">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Descubre tu próxima aventura</h2>
+            <p>Miles de juegos para PC, consolas a precios increíbles</p>
+            <a href="shop.html" class="btn btn-primary">Explorar Tienda</a>
+            <a href="#" class="btn btn-secondary">Más información</a>
+        </div>
+    </section>
+
+    <!-- Categorías -->
+    <section class="categories">
+        <div class="container">
+            <h2>Categorías Populares</h2>
+            <div class="category-grid">
+                <div class="category-card" onclick="filterByPlatform('PC')">
+                    <h3>🖥️ PC Games</h3>
+                </div>
+                <div class="category-card" onclick="filterByPlatform('PlayStation')">
+                    <h3>🎮 PlayStation</h3>
+                </div>
+                <div class="category-card" onclick="filterByPlatform('Xbox')">
+                    <h3>🎯 Xbox</h3>
+                </div>
+                <div class="category-card" onclick="filterByPlatform('Nintendo')">
+                    <h3>🕹️ Nintendo</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ofertas Destacadas -->
+    <section class="featured-offers">
+        <div class="container">
+            <h2>Ofertas Destacadas</h2>
+            <div id="featured-games" class="games-grid">
+                <!-- Se cargará con JavaScript/API -->
+                <div class="loading">Cargando juegos...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 ENEBA Clone - Proyecto Educativo</p>
+        </div>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <div id="chatbot-widget" class="chatbot-widget">
+        <button id="chatbot-toggle" class="chatbot-toggle">💬</button>
+        <div id="chatbot-window" class="chatbot-window" style="display:none;">
+            <div class="chatbot-header">
+                <h3>Soporte</h3>
+                <button id="chatbot-close">&times;</button>
+            </div>
+            <div id="chatbot-messages" class="chatbot-messages"></div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbot-input" placeholder="Escribe tu pregunta...">
+                <button id="chatbot-send">Enviar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

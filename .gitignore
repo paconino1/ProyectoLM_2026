@@ -1,0 +1,49 @@
+# Frontend
+node_modules/
+dist/
+build/
+*.log
+
+# Backend (Java/Maven)
+target/
+.classpath
+.project
+.settings/
+*.class
+*.jar
+*.war
+*.nar
+*.zip
+*.tar.gz
+.vscode/
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# IDEs
+.DS_Store
+Thumbs.db
+.env
+.env.local
+.env.*.local
+
+# Dependencies
+.m2/
+pom.xml.tag
+pom.xml.release-backup
+pom.xml.versionsBackup
+pom.xml.atomic
+release.properties
+release-pom.xml
+.flattened-pom.xml
+
+# Database
+*.sql
+*.db
+*.sqlite
+
+# OS specific
+*.swp
+*~
+.DS_Store

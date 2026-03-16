@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito - ENEBA Clone</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <h1><a href="index.html">ENEBA CLONE</a></h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="shop.html">Tienda</a></li>
+                <li><a href="carrito.html" class="active cart-link">🛒 Carrito <span id="cart-count" class="cart-badge">0</span></a></li>
+                <li><a href="#" id="login-btn">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="container">
+        <h1>Mi Carrito</h1>
+
+        <div class="cart-content">
+            <!-- Productos en el carrito -->
+            <div class="cart-items">
+                <h2>Productos</h2>
+                <div id="cart-items-list">
+                    <p class="empty-cart">Tu carrito está vacío</p>
+                </div>
+            </div>
+
+            <!-- Resumen del carrito -->
+            <aside class="cart-summary">
+                <h2>Resumen</h2>
+                <div class="summary-row">
+                    <span>Subtotal:</span>
+                    <span id="subtotal">€0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Descuentos:</span>
+                    <span id="discounts">-€0.00</span>
+                </div>
+                <div class="summary-row impuestos">
+                    <span>Total:</span>
+                    <span id="total" class="total-price">€0.00</span>
+                </div>
+                <button id="checkout-btn" class="btn btn-primary btn-full">
+                    Proceder al Pago
+                </button>
+                <a href="shop.html" class="btn btn-secondary btn-full">
+                    Volver a la Tienda
+                </a>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 ENEBA Clone - Proyecto Educativo</p>
+        </div>
+    </footer>
+
+    <!-- Chatbot Widget -->
+    <div id="chatbot-widget" class="chatbot-widget">
+        <button id="chatbot-toggle" class="chatbot-toggle">💬</button>
+        <div id="chatbot-window" class="chatbot-window" style="display:none;">
+            <div class="chatbot-header">
+                <h3>Soporte</h3>
+                <button id="chatbot-close">&times;</button>
+            </div>
+            <div id="chatbot-messages" class="chatbot-messages"></div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbot-input" placeholder="Escribe tu pregunta...">
+                <button id="chatbot-send">Enviar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/chatbot.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/carrito.js"></script>
+</body>
+</html>
