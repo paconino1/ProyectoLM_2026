@@ -1,110 +1,126 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tienda - ENEBA Clone</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
     <!-- Navegación -->
     <nav class="navbar">
-        <div class="container">
-            <div class="navbar-brand">
-                <h1><a href="index.html">ENEBA CLONE</a></h1>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="shop.html" class="active">Tienda</a></li>
-                <li><a href="carrito.html" class="cart-link">🛒 Carrito <span id="cart-count" class="cart-badge">0</span></a></li>
-                <li><a href="#" id="login-btn">Login</a></li>
-            </ul>
+      <div class="container">
+        <div class="navbar-brand">
+          <h1><a href="index.html">ENEBA CLONE</a></h1>
         </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="shop.html" class="active">Tienda</a></li>
+          <li>
+            <a href="carrito.html" class="cart-link"
+              >🛒 Carrito <span id="cart-count" class="cart-badge">0</span></a
+            >
+          </li>
+          <li><a href="#" id="login-btn">Login</a></li>
+        </ul>
+      </div>
     </nav>
 
     <!-- Contenido principal -->
     <div class="container">
-        <h1>Tienda de Videojuegos</h1>
-        
-        <!-- Filtros -->
-        <section class="filters">
-            <div class="filter-group">
-                <label for="platform-filter">Plataforma:</label>
-                <select id="platform-filter">
-                    <option value="">Todas</option>
-                    <option value="PC">PC</option>
-                    <option value="PlayStation">PlayStation</option>
-                    <option value="Xbox">Xbox</option>
-                    <option value="Nintendo">Nintendo</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <label for="price-filter">Ordenar por:</label>
-                <select id="price-filter">
-                    <option value="name">Nombre (A-Z)</option>
-                    <option value="price-asc">Precio (Menor a Mayor)</option>
-                    <option value="price-desc">Precio (Mayor a Menor)</option>
-                    <option value="discount">Mayor Descuento</option>
-                </select>
-            </div>
-            <div class="filter-group">
-                <input type="text" id="search-input" placeholder="Buscar juego...">
-            </div>
-        </section>
+      <h1>Tienda de Videojuegos</h1>
 
-        <!-- Grid de juegos -->
-        <section class="games-grid" id="games-grid">
-            <div class="loading">Cargando juegos...</div>
-        </section>
+      <!-- Filtros -->
+      <section class="filters">
+        <div class="filter-group">
+          <label for="platform-filter">Plataforma:</label>
+          <select id="platform-filter">
+            <option value="">Todas</option>
+            <option value="PC">PC</option>
+            <option value="PlayStation">PlayStation</option>
+            <option value="Xbox">Xbox</option>
+            <option value="Nintendo">Nintendo</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="price-filter">Ordenar por:</label>
+          <select id="price-filter">
+            <option value="name">Nombre (A-Z)</option>
+            <option value="price-asc">Precio (Menor a Mayor)</option>
+            <option value="price-desc">Precio (Mayor a Menor)</option>
+            <option value="discount">Mayor Descuento</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <input type="text" id="search-input" placeholder="Buscar juego..." />
+        </div>
+      </section>
+
+      <!-- Grid de juegos -->
+      <section class="games-grid" id="games-grid">
+        <div class="loading">Cargando juegos...</div>
+      </section>
     </div>
 
     <!-- Modal de detalles del juego -->
-    <div id="game-modal" class="modal" style="display:none;">
-        <div class="modal-content">
-            <button class="modal-close">&times;</button>
-            <div class="game-details">
-                <img id="modal-game-image" src="" alt="Juego">
-                <div class="game-info">
-                    <h2 id="modal-game-name"></h2>
-                    <p id="modal-game-description"></p>
-                    <p><strong>Plataforma:</strong> <span id="modal-game-platform"></span></p>
-                    <p><strong>Disponibilidad:</strong> <span id="modal-game-stock"></span></p>
-                    <div class="pricing">
-                        <p class="original-price" id="modal-original-price"></p>
-                        <p class="discount-price" id="modal-discount-price"></p>
-                    </div>
-                    <button id="add-to-cart-btn" class="btn btn-primary">Añadir al Carrito</button>
-                </div>
+    <div id="game-modal" class="modal" style="display: none">
+      <div class="modal-content">
+        <button class="modal-close">&times;</button>
+        <div class="game-details">
+          <img id="modal-game-image" src="" alt="Juego" />
+          <div class="game-info">
+            <h2 id="modal-game-name"></h2>
+            <p id="modal-game-description"></p>
+            <p>
+              <strong>Plataforma:</strong>
+              <span id="modal-game-platform"></span>
+            </p>
+            <p>
+              <strong>Disponibilidad:</strong>
+              <span id="modal-game-stock"></span>
+            </p>
+            <div class="pricing">
+              <p class="original-price" id="modal-original-price"></p>
+              <p class="discount-price" id="modal-discount-price"></p>
             </div>
+            <button id="add-to-cart-btn" class="btn btn-primary">
+              Añadir al Carrito
+            </button>
+          </div>
         </div>
+      </div>
     </div>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 ENEBA Clone - Proyecto Educativo</p>
-        </div>
+      <div class="container">
+        <p>&copy; 2026 ENEBA Clone - Proyecto Educativo</p>
+      </div>
     </footer>
 
     <!-- Chatbot Widget -->
     <div id="chatbot-widget" class="chatbot-widget">
-        <button id="chatbot-toggle" class="chatbot-toggle">💬</button>
-        <div id="chatbot-window" class="chatbot-window" style="display:none;">
-            <div class="chatbot-header">
-                <h3>Soporte</h3>
-                <button id="chatbot-close">&times;</button>
-            </div>
-            <div id="chatbot-messages" class="chatbot-messages"></div>
-            <div class="chatbot-input">
-                <input type="text" id="chatbot-input" placeholder="Escribe tu pregunta...">
-                <button id="chatbot-send">Enviar</button>
-            </div>
+      <button id="chatbot-toggle" class="chatbot-toggle">💬</button>
+      <div id="chatbot-window" class="chatbot-window" style="display: none">
+        <div class="chatbot-header">
+          <h3>Soporte</h3>
+          <button id="chatbot-close">&times;</button>
         </div>
+        <div id="chatbot-messages" class="chatbot-messages"></div>
+        <div class="chatbot-input">
+          <input
+            type="text"
+            id="chatbot-input"
+            placeholder="Escribe tu pregunta..."
+          />
+          <button id="chatbot-send">Enviar</button>
+        </div>
+      </div>
     </div>
 
     <script src="js/api.js"></script>
     <script src="js/chatbot.js"></script>
     <script src="js/main.js"></script>
     <script src="js/shop.js"></script>
-</body>
+  </body>
 </html>

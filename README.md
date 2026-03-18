@@ -5,6 +5,7 @@ Proyecto final del módulo **Lenguaje de Marcas** - Desarrollo full-stack de una
 ## 📋 Descripción
 
 Aplicación web completa que permite:
+
 - ✅ Navegar catálogo de videojuegos
 - ✅ Carrito de compras funcional
 - ✅ Inventario en base de datos
@@ -17,19 +18,23 @@ Aplicación web completa que permite:
 ## 🛠️ Stack Tecnológico
 
 ### Frontend
+
 - **HTML5 / CSS3 / JavaScript vanilla**
 - Servidor: GitHub Pages (estático)
 
 ### Backend
+
 - **Java 21 LTS**
 - **Spring Boot 3.x**
 - **Spring Data JPA**
 - **Maven** (gestor de dependencias)
 
 ### Base de Datos
+
 - **MySQL 8.x**
 
 ### APIs Externas
+
 - OpenAI o Hugging Face (chatbot)
 
 ---
@@ -69,34 +74,84 @@ ProyectoLM-2026/
 
 ---
 
-## 🚀 Instalación y Setup
+## � Ejecución con Docker (Recomendado)
 
 ### Requisitos
+
+- **Docker Desktop** instalado (https://www.docker.com/products/docker-desktop)
+- **20 minutos** la primera vez (descarga imágenes)
+
+### Paso 1: Verificar Docker
+
+```bash
+docker --version
+docker-compose --version
+```
+
+### Paso 2: Levantar los servicios
+
+```bash
+# Opción 1: Ejecutar el script (Windows)
+start-docker.bat
+
+# Opción 2: Comando directo
+docker-compose up --build
+```
+
+### Paso 3: Verificar que funciona
+
+- **Backend**: http://localhost:8080/api/juegos
+- **MySQL está corriendo** automáticamente en puerto 3306
+- **Base de datos `eneba_db`** se crea automáticamente
+
+### Ver datos en phpMyAdmin (desde tu XAMPP local)
+
+1. Abre http://localhost/phpmyadmin
+2. Usuario: `root`
+3. Contraseña: `root` (o la que tengas en tu XAMPP)
+4. Verás la BD `eneba_db` con tabla `juegos`
+
+### Detener los servicios
+
+```bash
+docker-compose down
+```
+
+---
+
+### Requisitos
+
 - Java 21 LTS
 - MySQL 8.x
 - Git 2.x
 - Maven 3.6+
 
 ### 1. Clonar el repositorio
+
 ```bash
 git clone https://github.com/paconino1/ProyectoLM_2026.git
 cd ProyectoLM-2026
 ```
 
 ### 2. Setup del Backend (Spring Boot)
+
 ```bash
 cd backend
 mvn clean install
 mvn spring-boot:run
 ```
+
 La API estará disponible en: `http://localhost:8080`
 
 ### 3. Setup del Frontend
+
 Abre `frontend/index.html` en tu navegador o usa un servidor local:
+
 ```bash
 cd frontend
 python -m http.server 3000
 ```
+
 O desde el terminal de VS Code: Live Server
 
 ---
@@ -104,29 +159,34 @@ O desde el terminal de VS Code: Live Server
 ## 📚 Fases del Proyecto
 
 ### Fase 1: Setup Inicial ✅
+
 - [x] Estructura de carpetas
 - [x] Configuración de Git/GitHub
 - [ ] Proyecto Maven base
 - [ ] Conexión MySQL
 
 ### Fase 2: API REST Backend
+
 - [ ] Entidades: Juego, Usuario, Compra
 - [ ] CRUD endpoints
 - [ ] Autenticación
 - [ ] Validaciones
 
 ### Fase 3: Frontend Funcional
+
 - [ ] Home
 - [ ] Catálogo
 - [ ] Detalles de producto
 - [ ] Carrito
 
 ### Fase 4: Funcionalidades Avanzadas
+
 - [ ] Chatbot de soporte
 - [ ] Panel de admin
 - [ ] Filtros y búsqueda
 
 ### Fase 5: Deploy
+
 - [ ] GitHub Pages (frontend)
 - [ ] Railway/Render (backend)
 
