@@ -6,16 +6,11 @@ FROM maven:3.9-eclipse-temurin-21 AS builder
 
 WORKDIR /app
 
-# Copiar pom.xml
+# Copiar pom.xml y el código fuente
 COPY pom.xml .
-
-# Descargar dependencias
-RUN mvn dependency:go-offline
-
-# Copiar código fuente
 COPY src ./src
 
-# Compilar
+# Compilar directamente (sin go-offline)
 RUN mvn clean package -DskipTests
 
 # Etapa 2: Ejecutar con Java
