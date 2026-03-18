@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   # Base de Datos MySQL
@@ -18,7 +18,8 @@ services:
     networks:
       - eneba_network
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot"]
+      test:
+        ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -34,6 +35,7 @@ services:
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      JAVA_OPTS: "-Xmx512m -Xms512m"
     ports:
       - "8080:8080"
     depends_on:
@@ -41,8 +43,6 @@ services:
         condition: service_healthy
     networks:
       - eneba_network
-    environment:
-      JAVA_OPTS: "-Xmx512m -Xmx512m"
 
 volumes:
   mysql_data:
