@@ -43,7 +43,7 @@
 
         <!-- MySQL Driver -->
         <dependency>
-            <groupId>com.mysql</groupId>
+            <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.33</version>
         </dependency>
@@ -106,11 +106,11 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- H2 Database (Para testing en memoria) -->
+        <!-- H2 Database (Para desarrollo local en memoria) -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <scope>test</scope>
+            <scope>runtime</scope>
         </dependency>
 
         <!-- DevTools (Auto-reload durante desarrollo) -->
