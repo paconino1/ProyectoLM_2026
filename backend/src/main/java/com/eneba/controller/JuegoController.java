@@ -42,14 +42,33 @@ public class JuegoController {
     private final JuegoService juegoService;
 
     /**
+     * GET /api/juegos/health
+     * Endpoint de prueba para verificar que el backend responde
+     */
+    @GetMapping("/health")
+    public ResponseEntity<Map<String, String>> health() {
+        log.info("GET /juegos/health - Health check");
+        Map<String, String> response = new HashMap<>();
+        response.put("status", "ok");
+        response.put("timestamp", java.time.LocalDateTime.now().toString());
+        return ResponseEntity.ok(response);
+    }
+
+    /**
      * GET /api/juegos
      * Obtiene todos los juegos
      */
     @GetMapping
     public ResponseEntity<List<Juego>> obtenerTodos() {
         log.info("GET /juegos - Obteniendo todos los juegos");
-        List<Juego> juegos = juegoService.obtenerTodos();
-        return ResponseEntity.ok(juegos);
+        try {
+            List<Juego> juegos = juegoService.obtenerTodos();
+            return ResponseEntity.ok(juegos);
+        } catch (Exception e) {
+            log.error("Error al obtener juegos", e);
+            // Retornar lista vacía en caso de error para desarrollo
+            return ResponseEntity.ok(List.of());
+        }
     }
 
     /**
