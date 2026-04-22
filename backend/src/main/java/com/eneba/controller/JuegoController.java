@@ -42,6 +42,66 @@ public class JuegoController {
     private final JuegoService juegoService;
 
     /**
+     * GET /api/juegos/seed/test-data
+     * SOLO PARA DESARROLLO: Carga 10 juegos de prueba
+     */
+    @GetMapping("/seed/test-data")
+    public ResponseEntity<Map<String, Object>> seedTestData() {
+        log.info("🎮 Cargando datos de prueba...");
+        try {
+            long countBefore = juegoService.obtenerTodos().size();
+            
+            // Si ya hay datos, no cargar de nuevo
+            if (countBefore > 0) {
+                Map<String, Object> resp = new HashMap<>();
+                resp.put("message", "Ya existen " + countBefore + " juegos en la BD");
+                resp.put("status", "skipped");
+                return ResponseEntity.ok(resp);
+            }
+
+            // Crear 10 juegos de prueba
+            juegoService.crear(crearJuegoTest("The Legend of Zelda: Breath of the Wild", "Nintendo Switch", "Aventura", 59.99));
+            juegoService.crear(crearJuegoTest("Elden Ring", "PC", "RPG", 59.99));
+            juegoService.crear(crearJuegoTest("Baldur's Gate 3", "PC", "RPG", 69.99));
+            juegoService.crear(crearJuegoTest("Starfield", "Xbox Series X", "Acción", 69.99));
+            juegoService.crear(crearJuegoTest("Cyberpunk 2077", "PC", "Acción", 39.99));
+            juegoService.crear(crearJuegoTest("Final Fantasy XVI", "PlayStation 5", "RPG", 69.99));
+            juegoService.crear(crearJuegoTest("Street Fighter 6", "PlayStation 5", "Lucha", 49.99));
+            juegoService.crear(crearJuegoTest("Ghostwire: Tokyo", "PlayStation 5", "Horror", 29.99));
+            juegoService.crear(crearJuegoTest("Hogwarts Legacy", "PC", "Aventura", 49.99));
+            juegoService.crear(crearJuegoTest("Forspoken", "PlayStation 5", "Aventura", 69.99));
+
+            Map<String, Object> response = new HashMap<>();
+            response.put("message", "✅ 10 juegos de prueba cargados exitosamente");
+            response.put("status", "success");
+            response.put("totalJuegos", juegoService.obtenerTodos().size());
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            log.error("Error al cargar datos de prueba", e);
+            Map<String, Object> error = new HashMap<>();
+            error.put("status", "error");
+            error.put("message", e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
+        }
+    }
+
+    private Juego crearJuegoTest(String nombre, String plataforma, String genero, double precio) {
+        Juego juego = new Juego();
+        juego.setNombre(nombre);
+        juego.setDescripcion("Juego de prueba: " + nombre);
+        juego.setPlataforma(plataforma);
+        juego.setGenero(genero);
+        juego.setPrecio(java.math.BigDecimal.valueOf(precio));
+        juego.setDescuento((int)(Math.random() * 40)); // 0-40% descuento
+        juego.setStock(50 + (int)(Math.random() * 50)); // 50-100 stock
+        juego.setDesarrollador("Developer");
+        juego.setEditor("Publisher");
+        juego.setFechaLanzamiento("2024-01-01");
+        juego.setCalificacion((float)(4 + Math.random() * 6)); // 4-10 calificación
+        return juego;
+    }
+
+    /**
      * GET /api/juegos/health
      * Endpoint de prueba para verificar que el backend responde
      */
